@@ -3,15 +3,7 @@ DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS enclosures;
 
-CREATE TABLE animals (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(255),
-	type VARCHAR(255),
-	age INT, 
-	enclosure_id INT REFERENCES enclosures(id)
-);
-
--- enclosures
+-- // enclosures
 
 CREATE TABLE enclosures (
 	id SERIAL PRIMARY KEY,
@@ -20,7 +12,17 @@ CREATE TABLE enclosures (
 	closed_for_maintenance BOOLEAN
 );
 
--- // staff
+-- // animals
+
+CREATE TABLE animals (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	type VARCHAR(255),
+	age INT, 
+	enclosure_id INT REFERENCES enclosures(id)
+);
+
+-- // employees
 
 CREATE TABLE employees (
 	id SERIAL PRIMARY KEY,
@@ -33,10 +35,9 @@ CREATE TABLE employees (
 CREATE TABLE assignments (
 	id SERIAL PRIMARY KEY,
 	employee_id INT REFERENCES employees(id)
-	enclosure_id INT REFERENCES enclosure(id)
+	enclosure_id INT REFERENCES enclosures(id)
 	day VARCHAR(255)
 );
- 
 
 --  // insert for enclosure
 
@@ -69,5 +70,4 @@ INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(1,4,'Wednesday');
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(3,3,'Friday');
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(4.1, 'Monday');
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(5.2, 'Monday');
-
 
