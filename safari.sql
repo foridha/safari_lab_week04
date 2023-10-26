@@ -17,7 +17,7 @@ CREATE TABLE enclosures (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
 	capacity INT,
-	closedForMaintenance VARCHAR(255)
+	closed_for_maintenance VARCHAR(255)
 );
 
 -- // staff
@@ -25,7 +25,7 @@ CREATE TABLE enclosures (
 CREATE TABLE employees (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
-	employeeNumber INT
+	employee_number INT
 );
 
 -- // assignment
