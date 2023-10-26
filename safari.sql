@@ -1,37 +1,39 @@
+DROP TABLE IF EXISTS assignments;
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS animals;
+DROP TABLE IF EXISTS enclosures;
 
-
-
-
-CREATE TABLE (
-	id SERIAL PRIMARY KEY
-	name "Tony",
-	"type": "Tiger",
-	"age": 59,
-	"enclosure_id": 1
+CREATE TABLE animals (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	type VARCHAR(255),
+	age INT, 
+	enclosure_id INT REFERENCES enclosures(id)
 );
 
-// enclosure
+-- enclosures
 
-{
-	"id": 1,
-	"name": "big cat field",
-	"capacity": 20,
-	"closedForMaintenance": false
-}
+CREATE TABLE enclosures (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	capacity INT,
+	closedForMaintenance VARCHAR(255)
+);
 
-// staff
+-- // staff
 
-{
-	"id": 1,
-	"name": "Captain Rik",
-	"employeeNumber": 12345,
-}
+CREATE TABLE employees (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	employeeNumber INT
+);
 
-// assignment
+-- // assignment
 
-{
-	"id": 1,
-	"employeeId": 1,
-	"enclosureId": 1,
-	"day": "Tuesday"
-}
+CREATE TABLE assignments (
+	id SERIAL PRIMARY KEY,
+	employee_id INT REFERENCES employees(id)
+	enclosure_id INT REFERENCES enclosure(id)
+	day VARCHAR(255)
+);
+
