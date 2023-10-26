@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS assignments;
-DROP TABLE IF EXISTS employees;
-DROP TABLE IF EXISTS animals;
-DROP TABLE IF EXISTS enclosures;
+DROP TABLE assignments;
+DROP TABLE employees;
+DROP TABLE animals;
+DROP TABLE enclosures;
 
 -- // enclosures
 
@@ -34,8 +34,8 @@ CREATE TABLE employees (
 
 CREATE TABLE assignments (
 	id SERIAL PRIMARY KEY,
-	employee_id INT REFERENCES employees(id)
-	enclosure_id INT REFERENCES enclosures(id)
+	employee_id INT REFERENCES employees(id),
+	enclosure_id INT REFERENCES enclosures(id),
 	day VARCHAR(255)
 );
 
@@ -68,6 +68,6 @@ INSERT INTO employees(name, employee_number)VALUES('Lol',667);
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(2,3,'Tuesday');
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(1,4,'Wednesday');
 INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(3,3,'Friday');
-INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(4.1, 'Monday');
-INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(5.2, 'Monday');
+INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(4,1, 'Monday');
+INSERT INTO assignments(employee_id,enclosure_id, day)VALUES(5,2, 'Monday');
 
